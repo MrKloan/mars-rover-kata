@@ -2,37 +2,17 @@ package fr.lacombe.rover;
 
 enum Orientation {
 
-    NORTH {
-        @Override
-        Orientation left() {
-            return WEST;
-        }
-    },
-    EAST {
-        @Override
-        Orientation left() {
-            return NORTH;
-        }
-    },
-    SOUTH {
-        @Override
-        Orientation left() {
-            return EAST;
-        }
-    },
-    WEST {
-        @Override
-        Orientation left() {
-            return SOUTH;
-        }
-    };
+    NORTH, EAST, SOUTH, WEST;
 
     Orientation right() {
-        if(this.ordinal() == Orientation.values().length - 1)
+        if (this == WEST)
             return NORTH;
-
         return Orientation.values()[this.ordinal() + 1];
     }
 
-    abstract Orientation left();
+    Orientation left() {
+        if (this == NORTH)
+            return WEST;
+        return Orientation.values()[this.ordinal() - 1];
+    }
 }
