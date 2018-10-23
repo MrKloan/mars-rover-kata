@@ -1,5 +1,5 @@
 package fr.lacombe.rover;
 
 enum Orientation {
-    NORTH, EAST, WEST
+    NORTH, EAST, WEST, SOUTH
 }
