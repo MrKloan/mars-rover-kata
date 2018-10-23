@@ -5,6 +5,7 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static fr.lacombe.rover.Orientation.SOUTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
@@ -22,5 +23,14 @@ public class PositionTest {
         final Position result = position.forward();
 
         assertThat(result).isEqualTo(new Position(expectedOrdinate));
+    }
+
+    @Test
+    public void should_calculate_forward_position_with_orientation() {
+        final Position position = new Position(1);
+
+        final Position result = position.forward(SOUTH);
+
+        assertThat(result).isEqualTo(new Position(0));
     }
 }

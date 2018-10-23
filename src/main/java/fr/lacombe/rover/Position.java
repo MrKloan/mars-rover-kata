@@ -14,6 +14,10 @@ class Position {
         return new Position(ordinate + 1);
     }
 
+    Position forward(final Orientation orientation) {
+        return new Position(0);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
