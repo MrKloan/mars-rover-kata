@@ -8,12 +8,16 @@ class Rover {
 
     private Position position;
 
-    Rover() {
-        this(Position.of(Orientation.NORTH, Coordinates.of(0, 0)));
+    private Rover(final Position position) {
+        this.position = position;
     }
 
-    Rover(final Position position) {
-        this.position = position;
+    static Rover withInitialPosition() {
+        return new Rover(Position.of(Orientation.NORTH, Coordinates.of(0, 0)));
+    }
+
+    static Rover of(final Position position) {
+        return new Rover(position);
     }
 
     Position receive(final List<Command> commands) {

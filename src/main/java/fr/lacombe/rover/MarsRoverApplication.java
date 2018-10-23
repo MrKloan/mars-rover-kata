@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
 class MarsRoverApplication {
 
     public static void main(final String[] args) {
-        final Rover rover = new Rover();
+        final Rover rover = Rover.withInitialPosition();
         final List<Command> commands = mapCommands(args);
 
         System.out.println("Initial state: " + rover);

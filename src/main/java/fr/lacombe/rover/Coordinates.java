@@ -16,11 +16,11 @@ class Coordinates {
         return new Coordinates(x, y);
     }
 
-    Coordinates addToX(final int offset) {
+    Coordinates offsetX(final int offset) {
         return new Coordinates(x + offset, y);
     }
 
-    Coordinates addToY(final int offset) {
+    Coordinates offsetY(final int offset) {
         return new Coordinates(x, y + offset);
     }
 

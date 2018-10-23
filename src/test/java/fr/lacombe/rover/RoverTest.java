@@ -25,7 +25,7 @@ public class RoverTest {
             final int expectedY
     ) {
         final Position position = Position.of(initialOrientation, Coordinates.of(0, 0));
-        final Rover rover = new Rover(position);
+        final Rover rover = Rover.of(position);
 
         final Position result = rover.receive(commands);
 

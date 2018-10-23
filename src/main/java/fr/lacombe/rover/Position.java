@@ -28,22 +28,22 @@ class Position {
 
     Position forward() {
         if (orientation == NORTH)
-            return of(orientation, coordinates.addToY(1));
+            return of(orientation, coordinates.offsetY(1));
         if (orientation == SOUTH)
-            return of(orientation, coordinates.addToY(-1));
+            return of(orientation, coordinates.offsetY(-1));
         if (orientation == EAST)
-            return of(orientation, coordinates.addToX(1));
-        return of(orientation, coordinates.addToX(-1));
+            return of(orientation, coordinates.offsetX(1));
+        return of(orientation, coordinates.offsetX(-1));
     }
 
     Position backward() {
         if (orientation == NORTH)
-            return of(orientation, coordinates.addToY(-1));
+            return of(orientation, coordinates.offsetY(-1));
         if (orientation == SOUTH)
-            return of(orientation, coordinates.addToY(1));
+            return of(orientation, coordinates.offsetY(1));
         if (orientation == EAST)
-            return of(orientation, coordinates.addToX(-1));
-        return of(orientation, coordinates.addToX(1));
+            return of(orientation, coordinates.offsetX(-1));
+        return of(orientation, coordinates.offsetX(1));
     }
 
     @Override
