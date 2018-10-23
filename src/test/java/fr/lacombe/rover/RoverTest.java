@@ -1,84 +1,45 @@
 package fr.lacombe.rover;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static fr.lacombe.rover.Orientation.*;
 import static fr.lacombe.rover.OrientationCommand.LEFT;
 import static fr.lacombe.rover.OrientationCommand.RIGHT;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(JUnitParamsRunner.class)
 public class RoverTest {
 
     @Test
-    public void should_be_oriented_west_when_turning_left_from_north() {
-        final Rover rover = new Rover();
+    @Parameters({
+            "NORTH, WEST",
+            "WEST, SOUTH",
+            "SOUTH, EAST",
+            "EAST, NORTH"
+    })
+    public void should_be_oriented_in_correct_orientation_when_turning_left(final Orientation initialOrientation, final Orientation expectedOrientation) {
+        final Rover rover = new Rover(initialOrientation);
 
         final Orientation result = rover.turn(LEFT);
 
-        assertThat(result).isEqualTo(WEST);
+        assertThat(result).isEqualTo(expectedOrientation);
     }
 
     @Test
-    public void should_be_oriented_south_when_turning_left_from_west() {
-        final Rover rover = new Rover(WEST);
-
-        final Orientation result = rover.turn(LEFT);
-
-        assertThat(result).isEqualTo(SOUTH);
-    }
-
-    @Test
-    public void should_be_oriented_east_when_turning_left_from_south() {
-        final Rover rover = new Rover(SOUTH);
-
-        final Orientation result = rover.turn(LEFT);
-
-        assertThat(result).isEqualTo(EAST);
-    }
-
-    @Test
-    public void should_be_oriented_north_when_turning_left_from_east() {
-        final Rover rover = new Rover(EAST);
-
-        final Orientation result = rover.turn(LEFT);
-
-        assertThat(result).isEqualTo(NORTH);
-    }
-
-    @Test
-    public void should_be_oriented_east_when_turning_right_from_north() {
-        final Rover rover = new Rover();
+    @Parameters({
+            "NORTH, EAST",
+            "EAST, SOUTH",
+            "SOUTH, WEST",
+            "WEST, NORTH"
+    })
+    public void should_be_oriented_in_correct_orientation_when_turning_right(final Orientation initialOrientation, final Orientation expectedOrientation) {
+        final Rover rover = new Rover(initialOrientation);
 
         final Orientation result = rover.turn(RIGHT);
 
-        assertThat(result).isEqualTo(EAST);
-    }
-
-
-    @Test
-    public void should_be_oriented_south_when_turning_right_from_east() {
-        final Rover rover = new Rover(EAST);
-
-        final Orientation result = rover.turn(RIGHT);
-
-        assertThat(result).isEqualTo(SOUTH);
-    }
-
-    @Test
-    public void should_be_oriented_west_when_turning_right_from_south() {
-        final Rover rover = new Rover(SOUTH);
-
-        final Orientation result = rover.turn(RIGHT);
-
-        assertThat(result).isEqualTo(WEST);
-    }
-
-    @Test
-    public void should_be_oriented_north_when_turning_right_from_west() {
-        final Rover rover = new Rover(WEST);
-
-        final Orientation result = rover.turn(RIGHT);
-
-        assertThat(result).isEqualTo(NORTH);
+        assertThat(result).isEqualTo(expectedOrientation);
     }
 }
