@@ -1,9 +1,11 @@
 package fr.lacombe.rover;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import static fr.lacombe.rover.Command.FORWARD;
+import static fr.lacombe.rover.Command.LEFT;
 import static fr.lacombe.rover.Command.RIGHT;
 
 class Rover {
@@ -18,15 +20,10 @@ class Rover {
         this.position = position;
     }
 
-    Rover turn(final Command command) {
-        this.position = position.turn(command);
-        return this;
-    }
-
     Rover receive(final List<Command> commands) {
         for (final Command command : commands) {
-            if (command == RIGHT)
-                this.position = position.turn(RIGHT);
+            if (command == RIGHT ||command == LEFT)
+                this.position = position.turn(command);
             if (command == FORWARD)
                 this.position = position.forward();
         }

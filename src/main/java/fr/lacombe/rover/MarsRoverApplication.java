@@ -1,5 +1,7 @@
 package fr.lacombe.rover;
 
+import java.util.Collections;
+
 import static fr.lacombe.rover.Command.LEFT;
 import static fr.lacombe.rover.Command.RIGHT;
 
@@ -12,9 +14,9 @@ class MarsRoverApplication {
 
         for (final String command : commands) {
             if (command.equals("L"))
-                rover = rover.turn(LEFT);
+                rover = rover.receive(Collections.singletonList(LEFT));
             else if (command.equals("R"))
-                rover = rover.turn(RIGHT);
+                rover = rover.receive(Collections.singletonList(RIGHT));
             else
                 System.err.println("Unknown rover command has been ignored: " + command);
         }

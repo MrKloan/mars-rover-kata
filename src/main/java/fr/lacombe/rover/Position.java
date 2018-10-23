@@ -2,6 +2,7 @@ package fr.lacombe.rover;
 
 import java.util.Objects;
 
+import static fr.lacombe.rover.Command.RIGHT;
 import static fr.lacombe.rover.Orientation.EAST;
 import static fr.lacombe.rover.Orientation.NORTH;
 import static fr.lacombe.rover.Orientation.WEST;
@@ -24,7 +25,9 @@ class Position {
     Position turn(final Command command) {
         if (command == LEFT)
             return of(orientation.left(), coordinates);
-        return of(orientation.right(), coordinates);
+        if(command == RIGHT)
+            return of(orientation.right(), coordinates);
+        return this;
     }
 
     Position forward() {
