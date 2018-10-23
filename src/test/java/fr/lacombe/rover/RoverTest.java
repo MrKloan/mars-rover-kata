@@ -38,7 +38,8 @@ public class RoverTest {
                 {NORTH,singletonList(LEFT), WEST, 0, 0},
                 {NORTH,singletonList(RIGHT), EAST, 0, 0},
                 {SOUTH,singletonList(BACKWARD), SOUTH, 0, 1},
-                {NORTH, asList(FORWARD, FORWARD, RIGHT, FORWARD), EAST, 1, 2}
+                {NORTH, asList(FORWARD, FORWARD, RIGHT, FORWARD), EAST, 1, 2},
+                {NORTH, asList(FORWARD, FORWARD, RIGHT, FORWARD, FORWARD, LEFT, BACKWARD, BACKWARD, RIGHT, BACKWARD, LEFT, LEFT, FORWARD, RIGHT), NORTH, 0, 0}
         };
     }
 }
