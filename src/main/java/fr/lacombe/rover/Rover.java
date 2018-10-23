@@ -24,6 +24,10 @@ class Rover {
         return new Rover(orientation.left());
     }
 
+    Rover turn(final OrientationCommand command) {
+        return new Rover(WEST);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

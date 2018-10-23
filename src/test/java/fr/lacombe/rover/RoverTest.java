@@ -25,4 +25,13 @@ public class RoverTest {
 
         assertThat(result).isEqualTo(new Rover(WEST));
     }
+
+    @Test
+    public void should_turn_left_2() {
+        final Rover rover = new Rover();
+
+        final Rover result = rover.turn(OrientationCommand.LEFT);
+
+        assertThat(result).isEqualTo(new Rover(WEST));
+    }
 }
