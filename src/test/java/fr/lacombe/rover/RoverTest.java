@@ -27,9 +27,9 @@ public class RoverTest {
         final Position position = Position.of(initialOrientation, Coordinates.of(0, 0));
         final Rover rover = new Rover(position);
 
-        final Rover result = rover.receive(commands);
+        final Position result = rover.receive(commands);
 
-        assertThat(result).isEqualTo(new Rover(Position.of(expectedOrientation, Coordinates.of(expectedX, expectedY))));
+        assertThat(result).isEqualTo(Position.of(expectedOrientation, Coordinates.of(expectedX, expectedY)));
     }
 
     static Object[] parameters() {

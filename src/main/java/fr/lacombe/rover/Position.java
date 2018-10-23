@@ -62,9 +62,6 @@ class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "orientation=" + orientation +
-                ", coordinates=" + coordinates +
-                '}';
+        return orientation + " [" + coordinates + "]";
     }
 }

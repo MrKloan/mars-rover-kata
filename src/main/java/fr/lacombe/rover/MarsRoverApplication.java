@@ -10,11 +10,11 @@ import static java.util.stream.Collectors.toList;
 class MarsRoverApplication {
 
     public static void main(final String[] args) {
+        final Rover rover = new Rover();
         final List<Command> commands = mapCommands(args);
-        Rover rover = new Rover();
 
         System.out.println("Initial state: " + rover);
-        rover = rover.receive(commands);
+        rover.receive(commands);
         System.out.println("Final state: " + rover);
     }
 
@@ -34,6 +34,8 @@ class MarsRoverApplication {
                 return Optional.of(RIGHT);
             case "F":
                 return Optional.of(FORWARD);
+            case "B":
+                return Optional.of(BACKWARD);
         }
 
         return Optional.empty();
