@@ -33,4 +33,13 @@ public class PositionTest {
 
         assertThat(result).isEqualTo(new Position(0));
     }
+
+    @Test
+    public void should_calculate_forward_position_with_orientation2() {
+        final Position position = new Position(2);
+
+        final Position result = position.forward(SOUTH);
+
+        assertThat(result).isEqualTo(new Position(1));
+    }
 }
