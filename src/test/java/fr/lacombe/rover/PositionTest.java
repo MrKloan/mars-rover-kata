@@ -18,13 +18,9 @@ public class PositionTest {
     @Test
     @Parameters({
             "0, 0, NORTH, 0, 1",
-            "0, 1, NORTH, 0, 2",
-            "0, 2, SOUTH, 0, 1",
             "0, 1, SOUTH, 0, 0",
             "0, 0, EAST, 1, 0",
-            "1, 0, EAST, 2, 0",
             "1, 0, WEST, 0, 0",
-            "2, 0, WEST, 1, 0"
     })
     public void should_calculate_forward_position_with_orientation(
             final int initialX, final int initialY,
@@ -42,6 +38,8 @@ public class PositionTest {
     @Parameters({
             "0, 1, NORTH, 0, 0",
             "1, 0, EAST, 0, 0",
+            "0, 0, WEST, 1, 0",
+            "0, 0, SOUTH, 0, 1",
     })
     public void should_calculate_backward_position_with_orientation(
             final int initialX, final int initialY,
@@ -56,20 +54,20 @@ public class PositionTest {
     }
 
     @Test
-    public void should_turn_right() {
-        final Position position = Position.of(NORTH, Coordinates.of(0, 0));
-
-        final Position result = position.turn(RIGHT);
-
-        assertThat(result).isEqualTo(Position.of(EAST, Coordinates.of(0, 0)));
-    }
-
-    @Test
     public void should_turn_left() {
         final Position position = Position.of(NORTH, Coordinates.of(0, 0));
 
-        final Position result = position.turn(LEFT);
+        final Position result = position.left();
 
         assertThat(result).isEqualTo(Position.of(WEST, Coordinates.of(0, 0)));
+    }
+
+    @Test
+    public void should_turn_right() {
+        final Position position = Position.of(NORTH, Coordinates.of(0, 0));
+
+        final Position result = position.right();
+
+        assertThat(result).isEqualTo(Position.of(EAST, Coordinates.of(0, 0)));
     }
 }

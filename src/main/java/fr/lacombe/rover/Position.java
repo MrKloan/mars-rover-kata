@@ -2,11 +2,7 @@ package fr.lacombe.rover;
 
 import java.util.Objects;
 
-import static fr.lacombe.rover.Command.RIGHT;
-import static fr.lacombe.rover.Orientation.EAST;
-import static fr.lacombe.rover.Orientation.NORTH;
-import static fr.lacombe.rover.Orientation.WEST;
-import static fr.lacombe.rover.Command.LEFT;
+import static fr.lacombe.rover.Orientation.*;
 
 class Position {
 
@@ -22,28 +18,32 @@ class Position {
         return new Position(orientation, coordinates);
     }
 
-    Position turn(final Command command) {
-        if (command == LEFT)
-            return of(orientation.left(), coordinates);
-        if(command == RIGHT)
-            return of(orientation.right(), coordinates);
-        return this;
+    Position left() {
+        return of(orientation.left(), coordinates);
+    }
+
+    Position right() {
+        return of(orientation.right(), coordinates);
     }
 
     Position forward() {
-        if(orientation == WEST)
-            return of(orientation, coordinates.addToX(-1));
-        if (orientation == EAST)
-            return of(orientation, coordinates.addToX(1));
         if (orientation == NORTH)
             return of(orientation, coordinates.addToY(1));
-        return of(orientation, coordinates.addToY(-1));
+        if (orientation == SOUTH)
+            return of(orientation, coordinates.addToY(-1));
+        if (orientation == EAST)
+            return of(orientation, coordinates.addToX(1));
+        return of(orientation, coordinates.addToX(-1));
     }
 
     Position backward() {
-        if(orientation == EAST)
+        if (orientation == NORTH)
+            return of(orientation, coordinates.addToY(-1));
+        if (orientation == SOUTH)
+            return of(orientation, coordinates.addToY(1));
+        if (orientation == EAST)
             return of(orientation, coordinates.addToX(-1));
-        return of(orientation, coordinates.addToY(-1));
+        return of(orientation, coordinates.addToX(1));
     }
 
     @Override

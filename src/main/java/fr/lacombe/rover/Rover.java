@@ -22,8 +22,10 @@ class Rover {
 
     Rover receive(final List<Command> commands) {
         for (final Command command : commands) {
-            if (command == RIGHT ||command == LEFT)
-                this.position = position.turn(command);
+            if (command == LEFT)
+                this.position = position.left();
+            if(command == RIGHT)
+                this.position = position.right();
             if (command == FORWARD)
                 this.position = position.forward();
         }
