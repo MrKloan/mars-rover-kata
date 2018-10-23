@@ -1,26 +1,41 @@
 package fr.lacombe.rover;
 
-import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
-import static fr.lacombe.rover.Command.LEFT;
-import static fr.lacombe.rover.Command.RIGHT;
+import static fr.lacombe.rover.Command.*;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 class MarsRoverApplication {
 
-    public static void main(final String[] commands) {
+    public static void main(final String[] args) {
+        final List<Command> commands = mapCommands(args);
         Rover rover = new Rover();
 
         System.out.println("Initial state: " + rover);
+        rover = rover.receive(commands);
+        System.out.println("Final state: " + rover);
+    }
 
-        for (final String command : commands) {
-            if (command.equals("L"))
-                rover = rover.receive(Collections.singletonList(LEFT));
-            else if (command.equals("R"))
-                rover = rover.receive(Collections.singletonList(RIGHT));
-            else
-                System.err.println("Unknown rover command has been ignored: " + command);
+    private static List<Command> mapCommands(final String[] args) {
+        return stream(args)
+                .map(MarsRoverApplication::mapCommand)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(toList());
+    }
+
+    private static Optional<Command> mapCommand(final String arg) {
+        switch (arg) {
+            case "L":
+                return Optional.of(LEFT);
+            case "R":
+                return Optional.of(RIGHT);
+            case "F":
+                return Optional.of(FORWARD);
         }
 
-        System.out.println("Final state: " + rover);
+        return Optional.empty();
     }
 }
