@@ -40,6 +40,12 @@ class Position {
         return of(orientation, coordinates.addToY(-1));
     }
 
+    Position backward() {
+        if(orientation == EAST)
+            return of(orientation, coordinates.addToX(-1));
+        return of(orientation, coordinates.addToY(-1));
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

@@ -39,6 +39,23 @@ public class PositionTest {
     }
 
     @Test
+    @Parameters({
+            "0, 1, NORTH, 0, 0",
+            "1, 0, EAST, 0, 0",
+    })
+    public void should_calculate_backward_position_with_orientation(
+            final int initialX, final int initialY,
+            final Orientation orientation,
+            final int expectedX, final int expectedY
+    ) {
+        final Position position = Position.of(orientation, Coordinates.of(initialX, initialY));
+
+        final Position result = position.backward();
+
+        assertThat(result).isEqualTo(Position.of(orientation, Coordinates.of(expectedX, expectedY)));
+    }
+
+    @Test
     public void should_turn_right() {
         final Position position = Position.of(NORTH, Coordinates.of(0, 0));
 
