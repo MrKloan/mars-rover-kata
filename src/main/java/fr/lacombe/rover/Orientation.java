@@ -4,21 +4,11 @@ enum Orientation {
 
     NORTH {
         @Override
-        Orientation right() {
-            return EAST;
-        }
-
-        @Override
         Orientation left() {
             return WEST;
         }
     },
     EAST {
-        @Override
-        Orientation right() {
-            return SOUTH;
-        }
-
         @Override
         Orientation left() {
             return NORTH;
@@ -26,28 +16,23 @@ enum Orientation {
     },
     SOUTH {
         @Override
-        Orientation right() {
-            return WEST;
-        }
-
-        @Override
         Orientation left() {
             return EAST;
         }
     },
     WEST {
         @Override
-        Orientation right() {
-            return NORTH;
-        }
-
-        @Override
         Orientation left() {
             return SOUTH;
         }
     };
 
-    abstract Orientation right();
+    Orientation right() {
+        if(this.ordinal() == Orientation.values().length - 1)
+            return NORTH;
+
+        return Orientation.values()[this.ordinal() + 1];
+    }
 
     abstract Orientation left();
 }
