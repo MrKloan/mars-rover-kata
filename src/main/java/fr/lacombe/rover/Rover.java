@@ -21,18 +21,20 @@ class Rover {
     }
 
     Position receive(final List<Command> commands) {
-        commands.forEach(command -> {
-            if (command == LEFT)
-                position = position.left();
-            if (command == RIGHT)
-                position = position.right();
-            if (command == FORWARD)
-                position = position.forward();
-            if (command == BACKWARD)
-                position = position.backward();
-        });
+        commands.forEach(this::move);
 
         return position;
+    }
+
+    private void move(final Command command) {
+        if (command == LEFT)
+            position = position.left();
+        else if (command == RIGHT)
+            position = position.right();
+        else if (command == FORWARD)
+            position = position.forward();
+        else if (command == BACKWARD)
+            position = position.backward();
     }
 
     @Override

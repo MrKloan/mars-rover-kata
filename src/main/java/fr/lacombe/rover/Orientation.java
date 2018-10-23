@@ -2,7 +2,18 @@ package fr.lacombe.rover;
 
 enum Orientation {
 
-    NORTH, EAST, SOUTH, WEST;
+    NORTH(0, 1),
+    EAST(1, 0),
+    SOUTH(0, -1),
+    WEST(-1, 0);
+
+    private final int offsetX;
+    private final int offsetY;
+
+    Orientation(final int offsetX, final int offsetY) {
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+    }
 
     Orientation left() {
         if (this == NORTH)
@@ -14,5 +25,13 @@ enum Orientation {
         if (this == WEST)
             return NORTH;
         return Orientation.values()[this.ordinal() + 1];
+    }
+
+    Coordinates forward(final Coordinates coordinates) {
+        return coordinates.add(offsetX, offsetY);
+    }
+
+    Coordinates backward(final Coordinates coordinates) {
+        return coordinates.subtract(offsetX, offsetY);
     }
 }

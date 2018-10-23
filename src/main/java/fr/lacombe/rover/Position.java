@@ -2,8 +2,6 @@ package fr.lacombe.rover;
 
 import java.util.Objects;
 
-import static fr.lacombe.rover.Orientation.*;
-
 class Position {
 
     private final Orientation orientation;
@@ -27,23 +25,11 @@ class Position {
     }
 
     Position forward() {
-        if (orientation == NORTH)
-            return of(orientation, coordinates.offsetY(1));
-        if (orientation == SOUTH)
-            return of(orientation, coordinates.offsetY(-1));
-        if (orientation == EAST)
-            return of(orientation, coordinates.offsetX(1));
-        return of(orientation, coordinates.offsetX(-1));
+        return of(orientation, orientation.forward(coordinates));
     }
 
     Position backward() {
-        if (orientation == NORTH)
-            return of(orientation, coordinates.offsetY(-1));
-        if (orientation == SOUTH)
-            return of(orientation, coordinates.offsetY(1));
-        if (orientation == EAST)
-            return of(orientation, coordinates.offsetX(-1));
-        return of(orientation, coordinates.offsetX(1));
+        return of(orientation, orientation.backward(coordinates));
     }
 
     @Override

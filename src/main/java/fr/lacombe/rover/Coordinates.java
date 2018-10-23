@@ -16,12 +16,12 @@ class Coordinates {
         return new Coordinates(x, y);
     }
 
-    Coordinates offsetX(final int offset) {
-        return new Coordinates(x + offset, y);
+    Coordinates add(final int x, final int y) {
+        return Coordinates.of(this.x + x, this.y + y);
     }
 
-    Coordinates offsetY(final int offset) {
-        return new Coordinates(x, y + offset);
+    Coordinates subtract(final int x, final int y) {
+        return add(-x, -y);
     }
 
     @Override
