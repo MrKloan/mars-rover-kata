@@ -7,12 +7,11 @@ class Position {
     private final int ordinate;
 
     Position(final int ordinate) {
-
         this.ordinate = ordinate;
     }
 
     Position forward() {
-        return new Position(1);
+        return new Position(ordinate + 1);
     }
 
     @Override
