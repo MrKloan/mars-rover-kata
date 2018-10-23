@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 import static fr.lacombe.rover.Orientation.EAST;
 import static fr.lacombe.rover.Orientation.NORTH;
 import static fr.lacombe.rover.Orientation.WEST;
-import static fr.lacombe.rover.OrientationCommand.LEFT;
-import static fr.lacombe.rover.OrientationCommand.RIGHT;
+import static fr.lacombe.rover.Command.LEFT;
+import static fr.lacombe.rover.Command.RIGHT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)

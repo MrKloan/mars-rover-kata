@@ -1,7 +1,7 @@
 package fr.lacombe.rover;
 
-import static fr.lacombe.rover.OrientationCommand.LEFT;
-import static fr.lacombe.rover.OrientationCommand.RIGHT;
+import static fr.lacombe.rover.Command.LEFT;
+import static fr.lacombe.rover.Command.RIGHT;
 
 class MarsRoverApplication {
 
