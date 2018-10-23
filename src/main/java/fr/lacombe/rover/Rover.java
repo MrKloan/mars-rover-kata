@@ -35,4 +35,11 @@ class Rover {
     public int hashCode() {
         return Objects.hash(orientation);
     }
+
+    @Override
+    public String toString() {
+        return "Rover{" +
+                "orientation=" + orientation +
+                '}';
+    }
 }
