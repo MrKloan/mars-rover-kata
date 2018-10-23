@@ -3,6 +3,7 @@ package fr.lacombe.rover;
 import java.util.Objects;
 
 import static fr.lacombe.rover.Orientation.*;
+import static fr.lacombe.rover.OrientationCommand.LEFT;
 
 class Rover {
 
@@ -16,12 +17,10 @@ class Rover {
         this.orientation = orientation;
     }
 
-    Rover turnRight() {
-        return new Rover(orientation.right());
-    }
-
     Rover turn(final OrientationCommand command) {
-        return new Rover(orientation.left());
+        if (command == LEFT)
+            return new Rover(orientation.left());
+        return new Rover(orientation.right());
     }
 
     @Override
