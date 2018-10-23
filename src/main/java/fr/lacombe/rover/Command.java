@@ -1,30 +1,20 @@
 package fr.lacombe.rover;
 
-enum Command {
-    LEFT {
-        @Override
-        Position updatePosition(final Position position) {
-            return position.left();
-        }
-    },
-    RIGHT {
-        @Override
-        Position updatePosition(final Position position) {
-            return position.right();
-        }
-    },
-    FORWARD {
-        @Override
-        Position updatePosition(final Position position) {
-            return position.forward();
-        }
-    },
-    BACKWARD {
-        @Override
-        Position updatePosition(final Position position) {
-            return position.backward();
-        }
-    };
+import java.util.function.UnaryOperator;
 
-    abstract Position updatePosition(final Position position);
+enum Command {
+    LEFT(Position::left),
+    RIGHT(Position::right),
+    FORWARD(Position::forward),
+    BACKWARD(Position::backward);
+
+    private final UnaryOperator<Position> operation;
+
+    Command(final UnaryOperator<Position> operation) {
+        this.operation = operation;
+    }
+
+    public Position execute(final Position position) {
+        return operation.apply(position);
+    }
 }

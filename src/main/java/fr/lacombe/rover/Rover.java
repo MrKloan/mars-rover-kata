@@ -19,7 +19,7 @@ class Rover {
     }
 
     Position receive(final List<Command> commands) {
-        commands.forEach(command -> position = command.updatePosition(position));
+        commands.forEach(command -> position = command.execute(position));
         return position;
     }
 
