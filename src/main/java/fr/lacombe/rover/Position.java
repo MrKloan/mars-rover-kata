@@ -15,9 +15,7 @@ class Position {
     }
 
     Position forward(final Orientation orientation) {
-        if(ordinate == 2)
-            return new Position(1);
-        return new Position(0);
+        return new Position(ordinate - 1);
     }
 
     @Override
