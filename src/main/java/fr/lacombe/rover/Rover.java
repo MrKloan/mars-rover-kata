@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.lacombe.rover.Command.FORWARD;
-import static fr.lacombe.rover.Command.LEFT;
-import static fr.lacombe.rover.Command.RIGHT;
+import static fr.lacombe.rover.Command.*;
 
 class Rover {
 
@@ -21,14 +19,16 @@ class Rover {
     }
 
     Rover receive(final List<Command> commands) {
-        for (final Command command : commands) {
+        commands.forEach(command -> {
             if (command == LEFT)
                 this.position = position.left();
-            if(command == RIGHT)
+            if (command == RIGHT)
                 this.position = position.right();
             if (command == FORWARD)
                 this.position = position.forward();
-        }
+            if (command == BACKWARD)
+                this.position = position.backward();
+        });
 
         return this;
     }

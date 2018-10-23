@@ -1,5 +1,5 @@
 package fr.lacombe.rover;
 
 enum Command {
-    FORWARD, LEFT, RIGHT
+    LEFT, RIGHT, FORWARD, BACKWARD
 }
