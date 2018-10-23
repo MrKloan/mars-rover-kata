@@ -17,13 +17,7 @@ class Rover {
 
     Orientation turn(final OrientationCommand command) {
         if (command == LEFT) {
-            if (orientation == WEST)
-                return SOUTH;
-            if(orientation == SOUTH)
-                return EAST;
-            if(orientation == EAST)
-                return NORTH;
-            return WEST;
+            return orientation.left();
         }
         return orientation.right();
     }
