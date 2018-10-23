@@ -26,7 +26,7 @@ class MarsRoverApplication {
                 .collect(toList());
     }
 
-    private static Optional<Command> mapCommand(final String arg) {
+    static Optional<Command> mapCommand(final String arg) {
         switch (arg) {
             case "L":
                 return Optional.of(LEFT);
