@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static fr.lacombe.rover.Orientation.EAST;
 import static fr.lacombe.rover.Orientation.WEST;
+import static fr.lacombe.rover.OrientationCommand.LEFT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RoverTest {
@@ -21,16 +22,7 @@ public class RoverTest {
     public void should_turn_left() {
         final Rover rover = new Rover();
 
-        final Rover result = rover.turnLeft();
-
-        assertThat(result).isEqualTo(new Rover(WEST));
-    }
-
-    @Test
-    public void should_turn_left_2() {
-        final Rover rover = new Rover();
-
-        final Rover result = rover.turn(OrientationCommand.LEFT);
+        final Rover result = rover.turn(LEFT);
 
         assertThat(result).isEqualTo(new Rover(WEST));
     }

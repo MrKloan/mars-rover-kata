@@ -20,12 +20,8 @@ class Rover {
         return new Rover(orientation.right());
     }
 
-    Rover turnLeft() {
-        return new Rover(orientation.left());
-    }
-
     Rover turn(final OrientationCommand command) {
-        return new Rover(WEST);
+        return new Rover(orientation.left());
     }
 
     @Override
