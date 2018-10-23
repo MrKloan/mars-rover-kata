@@ -38,4 +38,14 @@ public class RoverTest {
 
         assertThat(result).isEqualTo(SOUTH);
     }
+
+
+    @Test
+    public void should_be_oriented_west_when_turning_right_from_south() {
+        final Rover rover = new Rover(SOUTH);
+
+        final Orientation result = rover.turn(RIGHT);
+
+        assertThat(result).isEqualTo(WEST);
+    }
 }

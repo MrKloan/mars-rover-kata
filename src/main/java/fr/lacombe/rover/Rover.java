@@ -21,6 +21,8 @@ class Rover {
 
         if(orientation == EAST)
             return SOUTH;
+        if(orientation == SOUTH)
+            return WEST;
         return EAST;
     }
 }
