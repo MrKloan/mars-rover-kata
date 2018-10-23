@@ -2,6 +2,8 @@ package fr.lacombe.rover;
 
 import java.util.Objects;
 
+import static fr.lacombe.rover.Orientation.NORTH;
+
 class Position {
 
     private final int ordinate;
@@ -10,11 +12,9 @@ class Position {
         this.ordinate = ordinate;
     }
 
-    Position forward() {
-        return new Position(ordinate + 1);
-    }
-
     Position forward(final Orientation orientation) {
+        if (orientation == NORTH)
+            return new Position(ordinate + 1);
         return new Position(ordinate - 1);
     }
 

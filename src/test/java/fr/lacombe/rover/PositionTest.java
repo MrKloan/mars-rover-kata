@@ -5,7 +5,6 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static fr.lacombe.rover.Orientation.SOUTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
@@ -13,42 +12,16 @@ public class PositionTest {
 
     @Test
     @Parameters({
-            "0, 1",
-            "1, 2",
-            "2, 3"
+            "0, NORTH, 1",
+            "1, NORTH, 2",
+            "2, SOUTH, 1",
+            "1, SOUTH, 0"
     })
-    public void should_calculate_forward_position(final int initialOrdinate, final int expectedOrdinate) {
+    public void should_calculate_forward_position_with_orientation(final int initialOrdinate, final Orientation orientation, final int expectedOrdinate) {
         final Position position = new Position(initialOrdinate);
 
-        final Position result = position.forward();
+        final Position result = position.forward(orientation);
 
         assertThat(result).isEqualTo(new Position(expectedOrdinate));
-    }
-
-    @Test
-    public void should_calculate_forward_position_with_orientation() {
-        final Position position = new Position(1);
-
-        final Position result = position.forward(SOUTH);
-
-        assertThat(result).isEqualTo(new Position(0));
-    }
-
-    @Test
-    public void should_calculate_forward_position_with_orientation2() {
-        final Position position = new Position(2);
-
-        final Position result = position.forward(SOUTH);
-
-        assertThat(result).isEqualTo(new Position(1));
-    }
-
-    @Test
-    public void should_calculate_forward_position_with_orientation_3() {
-        final Position position = new Position(3);
-
-        final Position result = position.forward(SOUTH);
-
-        assertThat(result).isEqualTo(new Position(2));
     }
 }
