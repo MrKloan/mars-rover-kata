@@ -2,9 +2,7 @@ package fr.lacombe.rover;
 
 import org.junit.Test;
 
-import static fr.lacombe.rover.Orientation.EAST;
-import static fr.lacombe.rover.Orientation.SOUTH;
-import static fr.lacombe.rover.Orientation.WEST;
+import static fr.lacombe.rover.Orientation.*;
 import static fr.lacombe.rover.OrientationCommand.LEFT;
 import static fr.lacombe.rover.OrientationCommand.RIGHT;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,7 +37,6 @@ public class RoverTest {
         assertThat(result).isEqualTo(SOUTH);
     }
 
-
     @Test
     public void should_be_oriented_west_when_turning_right_from_south() {
         final Rover rover = new Rover(SOUTH);
@@ -47,5 +44,14 @@ public class RoverTest {
         final Orientation result = rover.turn(RIGHT);
 
         assertThat(result).isEqualTo(WEST);
+    }
+
+    @Test
+    public void should_be_oriented_north_when_turning_right_from_west() {
+        final Rover rover = new Rover(WEST);
+
+        final Orientation result = rover.turn(RIGHT);
+
+        assertThat(result).isEqualTo(NORTH);
     }
 }
