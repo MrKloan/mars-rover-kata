@@ -24,10 +24,10 @@ public class PositionTest {
             final Orientation orientation,
             final int expectedX, final int expectedY
     ) {
-        final Position position = Position.of(Coordinates.of(initialX, initialY));
+        final Position position = Position.of(Coordinates.of(initialX, initialY), orientation);
 
-        final Position result = position.forward(orientation);
+        final Position result = position.forward();
 
-        assertThat(result).isEqualTo(Position.of(Coordinates.of(expectedX, expectedY)));
+        assertThat(result).isEqualTo(Position.of(Coordinates.of(expectedX, expectedY), orientation));
     }
 }

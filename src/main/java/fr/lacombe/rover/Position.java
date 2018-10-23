@@ -8,21 +8,23 @@ import static fr.lacombe.rover.Orientation.NORTH;
 class Position {
 
     private final Coordinates coordinates;
+    private final Orientation orientation;
 
-    private Position(final Coordinates coordinates) {
+    private Position(final Coordinates coordinates, final Orientation orientation) {
         this.coordinates = coordinates;
+        this.orientation = orientation;
     }
 
-    static Position of(final Coordinates coordinates) {
-        return new Position(coordinates);
+    static Position of(final Coordinates coordinates, final Orientation orientation) {
+        return new Position(coordinates, orientation);
     }
 
-    Position forward(final Orientation orientation) {
+    Position forward() {
         if (orientation == EAST)
-            return new Position(coordinates.addToX(1));
+            return of(coordinates.addToX(1), orientation);
         if (orientation == NORTH)
-            return new Position(coordinates.addToY(1));
-        return new Position(coordinates.addToY(-1));
+            return of(coordinates.addToY(1), orientation);
+        return of(coordinates.addToY(-1), orientation);
     }
 
     @Override
