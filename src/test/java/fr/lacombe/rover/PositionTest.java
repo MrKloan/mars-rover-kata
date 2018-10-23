@@ -5,7 +5,6 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static fr.lacombe.rover.Orientation.EAST;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
@@ -25,10 +24,10 @@ public class PositionTest {
             final Orientation orientation,
             final int expectedX, final int expectedY
     ) {
-        final Position position = new Position(initialX, initialY);
+        final Position position = Position.of(Coordinates.of(initialX, initialY));
 
         final Position result = position.forward(orientation);
 
-        assertThat(result).isEqualTo(new Position(expectedX, expectedY));
+        assertThat(result).isEqualTo(Position.of(Coordinates.of(expectedX, expectedY)));
     }
 }

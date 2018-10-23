@@ -7,20 +7,22 @@ import static fr.lacombe.rover.Orientation.NORTH;
 
 class Position {
 
-    private final int x;
-    private final int y;
+    private final Coordinates coordinates;
 
-    Position(final int x, final int y) {
-        this.x = x;
-        this.y = y;
+    private Position(final Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    static Position of(final Coordinates coordinates) {
+        return new Position(coordinates);
     }
 
     Position forward(final Orientation orientation) {
         if (orientation == EAST)
-            return new Position(x + 1, 0);
+            return new Position(coordinates.addToX(1));
         if (orientation == NORTH)
-            return new Position(0, y + 1);
-        return new Position(0, y - 1);
+            return new Position(coordinates.addToY(1));
+        return new Position(coordinates.addToY(-1));
     }
 
     @Override
@@ -28,12 +30,11 @@ class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Position position = (Position) o;
-        return x == position.x &&
-                y == position.y;
+        return Objects.equals(coordinates, position.coordinates);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(coordinates);
     }
 }
