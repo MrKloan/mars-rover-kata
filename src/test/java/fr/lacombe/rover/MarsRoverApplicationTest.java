@@ -14,6 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MarsRoverApplicationTest {
 
     @Test
+    public void should_map_unknown_parameter_to_empty_optional() {
+        final String argument = "Z";
+
+        final Optional<Command> result = MarsRoverApplication.mapCommand(argument);
+
+        assertThat(result).isEqualTo(Optional.empty());
+    }
+
+    @Test
     @Parameters({
             "L, LEFT",
             "R, RIGHT",
