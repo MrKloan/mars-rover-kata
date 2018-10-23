@@ -2,8 +2,6 @@ package fr.lacombe.rover;
 
 import org.junit.Test;
 
-import static fr.lacombe.rover.Orientation.EAST;
-import static fr.lacombe.rover.Orientation.WEST;
 import static fr.lacombe.rover.OrientationCommand.LEFT;
 import static fr.lacombe.rover.OrientationCommand.RIGHT;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +14,7 @@ public class RoverTest {
 
         final Rover result = rover.turn(RIGHT);
 
-        assertThat(result).isEqualTo(new Rover(EAST));
+        assertThat(result).isEqualTo(new Rover(Position.of(Orientation.EAST, Coordinates.of(0, 0))));
     }
 
     @Test
@@ -25,6 +23,6 @@ public class RoverTest {
 
         final Rover result = rover.turn(LEFT);
 
-        assertThat(result).isEqualTo(new Rover(WEST));
+        assertThat(result).isEqualTo(new Rover(Position.of(Orientation.WEST, Coordinates.of(0, 0))));
     }
 }

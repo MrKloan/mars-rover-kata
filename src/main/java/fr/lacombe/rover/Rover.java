@@ -2,25 +2,21 @@ package fr.lacombe.rover;
 
 import java.util.Objects;
 
-import static fr.lacombe.rover.Orientation.*;
-import static fr.lacombe.rover.OrientationCommand.LEFT;
-
 class Rover {
 
-    private final Orientation orientation;
+    private Position position;
 
     Rover() {
-        this(NORTH);
+        this(Position.of(Orientation.NORTH, Coordinates.of(0, 0)));
     }
 
-    Rover(final Orientation orientation) {
-        this.orientation = orientation;
+    Rover(final Position position) {
+        this.position = position;
     }
 
     Rover turn(final OrientationCommand command) {
-        if (command == LEFT)
-            return new Rover(orientation.left());
-        return new Rover(orientation.right());
+        this.position = position.turn(command);
+        return this;
     }
 
     @Override
@@ -28,18 +24,18 @@ class Rover {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Rover rover = (Rover) o;
-        return orientation == rover.orientation;
+        return Objects.equals(position, rover.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orientation);
+        return Objects.hash(position);
     }
 
     @Override
     public String toString() {
         return "Rover{" +
-                "orientation=" + orientation +
+                "position=" + position +
                 '}';
     }
 }
