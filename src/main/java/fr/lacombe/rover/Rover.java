@@ -21,6 +21,8 @@ class Rover {
                 return SOUTH;
             if(orientation == SOUTH)
                 return EAST;
+            if(orientation == EAST)
+                return NORTH;
             return WEST;
         }
         return orientation.right();

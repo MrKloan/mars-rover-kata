@@ -37,6 +37,15 @@ public class RoverTest {
     }
 
     @Test
+    public void should_be_oriented_north_when_turning_left_from_east() {
+        final Rover rover = new Rover(EAST);
+
+        final Orientation result = rover.turn(LEFT);
+
+        assertThat(result).isEqualTo(NORTH);
+    }
+
+    @Test
     public void should_be_oriented_east_when_turning_right_from_north() {
         final Rover rover = new Rover();
 
